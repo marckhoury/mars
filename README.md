@@ -7,3 +7,7 @@ mars is a graph layout tool for large graph visualization. By constructing a low
 
 Build
 =====
+
+mars is dependent upon cgraph, which is part of the Graphviz library, and LAPACK. On a Mac these libraries can be installed by running
+  brew install lapack
+  brew install graphviz
