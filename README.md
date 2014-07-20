@@ -16,8 +16,8 @@ mars requires cgraph, included in the Graphviz library, and LAPACK.
 
 * On Linux these packages can be installed using apt-get:
 
-        sudo apt-get install 
-        sudo apt-get install
+        sudo apt-get install liblapack-dev
+        sudo apt-get install graphviz graphviz-dev libcgraph5
 
 ### Mac OSX and *nix
 
