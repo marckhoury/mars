@@ -49,8 +49,7 @@ mars is a command line tool written in the same style as any Graphviz program. T
           -g         - use given initial layout, else random
           -?         - print help message
 
-* If input and output files are not specified, mars will read from stdin and write to stdout.
-
+* Input graphs must be specified using the [DOT](http://en.wikipedia.org/wiki/DOT_(graph_description_language)) graph description format. If input and output files are not specified, mars will read from stdin and write to stdout.
 * `-k` Specifies the number of columns to be sampled from the full Laplacian matrix; this is equivalent to the number of anchor nodes used in the algorithm. A single-source shortest path algorithm is run from each anchor node to build the weighted Laplacian matrix. As more columns are sampled the quality of the layout improves at the cost of more computation time and memory. Default value is 100.
 * `-p` Specifies the exponent of the weight matrix in the stress majorization algorithm. Different values of the exponent simplify various parts of the stress majorization equations, leading to more accurate approximations. Setting `p = 1` results in a very accurate approximation using a Barnes-Hut simulation. Setting `p = 2` tends to produce better stress majorization layouts, however it requires a more complicated and less accurate modified Barnes-Hut computation based on clustering. Default is `p = 1`.
 * `-d` Specifies the dimension of the layout. Usually layouts are computed in 2 or 3 dimensional space, since higher dimensional layouts cannot be visualized. Default is `d = 2`.
