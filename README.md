@@ -1,6 +1,6 @@
 ## mars
 
-mars is a graph drawing tool for large graph visualization. By constructing a low-rank approximation to the weighted Laplacian matrix of a graph, mars can compute stress majorization based layouts for graphs with as many as several hundred thousand nodes. This is well beyond the limits of standard stress majorization layout algorithms, including those implemented in the Graphviz program `neato`. 
+mars is a graph drawing tool for large graph visualization. mars can compute stress majorization based layouts for graphs with as many as several hundred thousand nodes. This is well beyond the limits of standard stress majorization layout algorithms, including those implemented in the Graphviz program `neato`. 
 
 ![finance256](./finance256.gif)
 
@@ -62,6 +62,15 @@ Lastly, mars only computes a graph layout, it does not implement a renderer. To 
         neato -Tpng -n out.gv > out.png
 
 The `-n` option tells neato to use the given layout and the `Tpng` option specifies the output format. 
+
+## Examples
+
+## Technical Details
+Standard stress majorization techniques begin by constructing the weighted Laplacian matrix, which requires computing the all-pairs shortest path matrix. This matrix is dense and is expensive to compute. Instead mars samples `k` colmuns from this matrix, choosing vertices that are as far apart as possible in the graph. From these `k` columns, mars computes a low-rank approximation to the full weighted Laplacian matrix using a singular value decomposition. 
+
+In the stress majorization formulation, one side of the iterative equation can be reduced to a force calculation if the all-pairs shortest path matrix is raised to the first power, `p = 1`. mars exploits this fact by using a Barnes-Hut approximation scheme to efficiently compute these forces without constructing a large dense matrix and performing expensive matrix-vector multiplications. When `p` is some value not equal to 1, mars uses a modified Barnes-Hut algorithm based on clustring to avoid computing the all-pairs shortest path matrix.
+
+Combined, these two approximation techniques allow mars to scale well beyond the capabilities of `neato`, computing layouts for graph as large as several hundred thousand nodes. 
 
 ## Acknowledgements
 
