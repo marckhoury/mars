@@ -65,6 +65,8 @@ The `-n` option tells neato to use the given layout and the `Tpng` option specif
 
 ## Examples
 
+
+
 ## Technical Details
 Standard stress majorization techniques begin by constructing the weighted Laplacian matrix, which requires computing the all-pairs shortest path matrix. This matrix is dense and is expensive to compute. Instead mars samples `k` colmuns from this matrix, choosing vertices that are as far apart as possible in the graph. From these `k` columns, mars computes a low-rank approximation to the full weighted Laplacian matrix using a singular value decomposition. 
 
