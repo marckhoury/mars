@@ -638,7 +638,12 @@ mat mars(Agraph_t* g, struct marsopts opts)
         z = mat_rand(n, opts.dim);
     }
     translate_by_centroid(z);
-    
+   
+    if(opts.viewer) {
+        init_viewer(g, opts.max_iter);
+        append_layout(z);
+    }
+     
     old_stress = stress(z, dij, anchors, opts.power);
     while(change > EPSILON && iter < opts.max_iter) {
         mat right_side;
@@ -667,7 +672,11 @@ mat mars(Agraph_t* g, struct marsopts opts)
         adjust_anchors(g, anchors, k, z);
         update_anchors(z, dij, anchors, opts.power);
         translate_by_centroid(z);
-    
+   
+        if(opts.viewer) {
+            append_layout(z);
+        }
+         
         new_stress = stress(z, dij, anchors, opts.power);
         change = fabs(new_stress-old_stress)/old_stress;
         old_stress = new_stress;

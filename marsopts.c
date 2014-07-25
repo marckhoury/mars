@@ -11,7 +11,7 @@ struct marsopts init(int argc, char* argv[])
     int c;
     //{cmd,fin,fout,k,power,dim,scale,max_iter,verbose, viewer}
     struct marsopts opts = {argv[0], stdin, stdout, 100, 1, 2, 72, 200, 0, 0};
-    while((c = getopt(argc,argv,":o:k:p:d:s:i:cg")) != -1) {
+    while((c = getopt(argc,argv,":o:k:p:d:s:i:cvg")) != -1) {
         switch(c) {
             case 'o':
                 opts.fout = fopen(optarg,"w");
@@ -37,6 +37,9 @@ struct marsopts init(int argc, char* argv[])
             break;
             case 'c':
                 opts.color = 1;
+            break;
+            case 'v':
+                opts.viewer = 1;
             break;
             case 'g':
                 opts.given = 1;

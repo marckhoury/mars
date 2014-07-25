@@ -9,6 +9,7 @@
 #include "graph.h"
 #include "dijkstra.h"
 #include "layout.h"
+#include "marsviewer.h"
 
 char* pos_to_str(double* pos, int dim)
 {
@@ -38,16 +39,19 @@ int main(int argc, char* argv[])
 	init_graph(g);
 	z = mars(g, opts);
 	mat_scalar_mult(z, opts.scale);
+
+    if(opts.viewer) {
+        viewer(argc, argv);
+    } else {
+	    for(n = agfstnode(g); n; n = agnxtnode(g,n)) {
+		    int id = getid(n);
+		    char* s = pos_to_str(&z->m[mindex(id, 0, z)], z->c);
+		    agset(n,"pos",s);
+		    free(s);
+	    }
 	
-	for(n = agfstnode(g); n; n = agnxtnode(g,n)) {
-		int id = getid(n);
-		char* s = pos_to_str(&z->m[mindex(id, 0, z)], z->c);
-		agset(n,"pos",s);
-		free(s);
+	    agwrite(g, opts.fout);
 	}
-	
-	agwrite(g, opts.fout);
-	
 	mat_free(z);
 	clean_up(g);
 	agclose(g);
