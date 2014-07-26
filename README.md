@@ -66,6 +66,14 @@ The `-n` option tells neato to use the given layout and the `Tpng` option specif
 
 ## Examples
 
+The default options should work resonably well for most graph. The simplest example is 
+
+        ./mars -o finance256_layout.gv finance256.gv
+        
+which would produce the following output in finance256_layout.gv
+
+        output 
+
 
 
 ## Technical Details
