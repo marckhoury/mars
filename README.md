@@ -74,6 +74,17 @@ which would produce the following output in finance256_layout.gv
 
         output 
 
+To visualize the result, we can use `neato`'s renderer to create a static image.
+
+        neato -Tpng -n finance256_layout.gv > finance256.png
+
+The `-n` parameter tells `neato` that the nodes have already been positioned and have a pos attribute giving the positions. The `-T` parameter specifies the output format. The following image is the result.
+
+        ![finance](./finance256.png)
+
+The `-c`
+
+
 
 
 ## Technical Details
