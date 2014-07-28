@@ -2,7 +2,7 @@
 
 `mars` is a graph drawing tool for large graph visualization. `mars` can compute stress majorization based layouts for graphs with as many as several hundred thousand nodes. This is well beyond the limits of standard stress majorization layout algorithms, including those implemented in the Graphviz program `neato`. 
 
-![finance256](./finance256.gif)
+![finance256](images/finance256.gif)
 
 ## Build
 
@@ -93,39 +93,39 @@ To visualize the result, we can use `neato`'s renderer to create a static image.
 
 The `-n` parameter tells `neato` that the nodes have already been positioned and have a pos attribute giving the positions. The `-T` parameter specifies the output format.
 
-        ![finance](images/finance256.png)
+![finance](images/finance256.png)
 
 The `-c` parameter will set the color attribute of the anchor nodes to red, making them easier to identify.
 
         ./mars -c -k 10 graphs/can_144.gv
 
 
-        ![can_144](images/can_144.png)
+![can_144](images/can_144.png)
 
 Increasing the value of `-k` improves the quality of the layout.
 
         ./mars -c -k 30 graphs/can_144.gv
 
-        ![can_144_2](images/can_144_2.png)
+![can_144_2](images/can_144_2.png)
 
 
 The `-p` parameter specifies the exponent of the weight matrix. Different values can lead to very different layouts. `mars` implements a very accurate approximation in the case `p = 1`
     
         ./mars -p 1 -o nasa_layout.gv graphs/nasa1824.png
 
-        ![nasap1](images/nasap1.png)
+![nasap1](images/nasap1.png)
 
 However the approximation is poorer for larger values of `p` even though in standard stress majorization `p = 2` produces the best layouts in practice.
 
         ./mars -p 2 -o nasa_layout.gv graph/nasa1824.png
 
-        ![nasap2](images/nasap2.png)
+![nasap2](images/nasap2.png)
 
 `mars` also includes an interactive viewer, specified by the `-v` parameter. This is particularly useful for visualizing three dimensional layouts.
 
         ./mars -v -d 3 -k 1824 graphs/nasa1824.gv
 
-        ![nasa](images/nasa.png)
+![nasa](images/nasa1824.png)
 
 
 ## Technical Details
