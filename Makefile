@@ -8,7 +8,7 @@ else
     LIBS = -lcgraph -llapack -lcdt libsfdp.a -lGL -lglut -lGLU
 endif
 
-CFLAGS = -g -O2
+CFLAGS = -O2
 OBJECTS = dijkstra.o graph.o layout.o linalg.o marsopts.o glcontext.o marsviewer.o
 TARGET = mars
 
