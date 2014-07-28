@@ -2,7 +2,7 @@
 
 `mars` is a graph drawing tool for large graph visualization. `mars` can compute stress majorization based layouts for graphs with as many as several hundred thousand nodes. This is well beyond the limits of standard stress majorization layout algorithms, including those implemented in the Graphviz program `neato`. 
 
-![finance256](./finance256.gif)
+![finance256](images/finance256.gif)
 
 ## Build
 
