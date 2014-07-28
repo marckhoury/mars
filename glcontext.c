@@ -14,7 +14,8 @@ struct Context* context_new()
     ctx->diffuse[0] = 1, ctx->diffuse[1] = 1, ctx->diffuse[3] = 1, ctx->diffuse[3] = 1;
     ctx->specular[0] = 1, ctx->specular[1] = 1, ctx->specular[2] = 1, ctx->specular[3] = 1;
     ctx->global_ambient[0] = 0.4, ctx->global_ambient[1] = 0.4, ctx->global_ambient[2] = 0.4, ctx->global_ambient[3] = 1;
-    for(int i = 0; i < 16; i++) {
+    int i;
+    for(i = 0; i < 16; i++) {
         int entry = i == 0 || i == 5 || i == 10 || i == 15;
         ctx->mat[i] = entry;
         ctx->matinv[i] = entry;
