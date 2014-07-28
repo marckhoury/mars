@@ -100,7 +100,7 @@ The `-c` parameter will set the color attribute of the anchor nodes to red, maki
         ./mars -c -k 10 graphs/can_144.gv
 
 
-![can_144](images/resizetest.png)
+![can_144](images/can_144.png)
 
 Increasing the value of `-k` improves the quality of the layout.
 
