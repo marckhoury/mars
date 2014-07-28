@@ -125,7 +125,7 @@ However the approximation is poorer for larger values of `p` even though in stan
 
         ./mars -v -d 3 -k 1824 graphs/nasa1824.gv
 
-![nasa](images/nasa.png)
+![nasa](images/nasa1824.png)
 
 
 ## Technical Details
