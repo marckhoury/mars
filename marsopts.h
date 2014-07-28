@@ -17,6 +17,7 @@ struct marsopts {
     int scale;
     int max_iter;
     int color;
+    int viewer;
     int given;
 };
 
@@ -28,6 +29,7 @@ static char* use_string = "Usage: mars [-k k] [-p power] [-d dim] [-s scale] [-i
   -i iter    - set the maximum iterations to converge\n\
   -o outfile - write output graph to file\n\
   -c         - color anchor nodes\n\
+  -v         - visualize layout in interactive viewer\n\
   -g         - use given initial layout, else random\n\
   -?         - print help message\n";
 

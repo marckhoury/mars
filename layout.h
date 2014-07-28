@@ -19,6 +19,7 @@
 #include "linalg.h"
 #include "marsopts.h"
 #include "dijkstra.h"
+#include "marsviewer.h"
 
 void dgeqrf_(const int* M, const int* N, double* A, const int* lda,
              double* TAU, double* work, const int* lwork, int* info);
