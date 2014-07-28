@@ -117,7 +117,7 @@ The `-p` parameter specifies the exponent of the weight matrix. Different values
 
 However the approximation is poorer for larger values of `p` even though in standard stress majorization `p = 2` produces the best layouts in practice.
 
-        ./mars -p 2 -o nasa_layout.gv graph/nasa1824.png
+        ./mars -p 2 -o nasa_layout.gv graphs/nasa1824.png
 
 ![nasap2](images/nasap2.png)
 
