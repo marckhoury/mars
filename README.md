@@ -57,7 +57,7 @@
 * `-d` Specifies the dimension of the layout. Usually layouts are computed in 2 or 3 dimensional space, since higher dimensional layouts cannot be visualized. Default is `d = 2`.
 * `-s` Specifies a scaling factor to apply to the layout after the initial layout is computed. This is particularly helpful to spread out a layout with a large number of overlapping nodes. Default is `s = 72`.
 * `-i` Specifies the maximum number of iterations for the iterative layout algorithm. A larger number of iterations tends to improve the quality of the layout, up to a point, at the cost of additional time. Default is `i = 200`.
-* `-o` Specifies the output file. If none is provided `mars` will write to stdout. 
+* `-o` Specifies the output file. If no output file is provided `mars` will write to stdout. 
 * `-c` Sets the color attribute of the anchor nodes to "red". When rendered with `neato`, the border of the anchor nodes will be colored red instead of black.
 * `-v` Launches an interactive 3D viewer. This makes it easy to quickly visualize large graph layouts and is particularly useful for three dimensional layouts. The viewer includes its own menu of options and implements a trackball interface for translations, zooming, and scaling.
 * `-g` Expect that a layout specified in the input and start the iterative layout algorithm from the given layout.
