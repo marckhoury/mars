@@ -39,7 +39,7 @@
 `mars` is a command line tool written in the same style as any Graphviz program. To display the help message run:
 
         ./mars -?
-        Usage: mars [-k k] [-p power] [-d dim] [-s scale] [-i iter] [-o outfile] [-cg?]
+        Usage: mars [-k k] [-p power] [-d dim] [-s scale] [-i iter] [-o outfile] [-cvg?]
           -k k       - sample k columns from the full laplacian matrix
           -p power   - exponent of the weight matrix
           -d dim     - dimension of the layout
@@ -47,6 +47,7 @@
           -i iter    - set the maximum iterations to converge
           -o outfile - write output graph to file
           -c         - color anchor nodes
+          -v         - visualize layout in interactive viewer
           -g         - use given initial layout, else random
           -?         - print help message
 
@@ -56,35 +57,75 @@
 * `-d` Specifies the dimension of the layout. Usually layouts are computed in 2 or 3 dimensional space, since higher dimensional layouts cannot be visualized. Default is `d = 2`.
 * `-s` Specifies a scaling factor to apply to the layout after the initial layout is computed. This is particularly helpful to spread out a layout with a large number of overlapping nodes. Default is `s = 72`.
 * `-i` Specifies the maximum number of iterations for the iterative layout algorithm. A larger number of iterations tends to improve the quality of the layout, up to a point, at the cost of additional time. Default is `i = 200`.
+* `-o` Specifies the output file. If none is provided `mars` will write to stdout. 
+* `-c` Sets the color attribute of the anchor nodes to "red". When rendered with `neato`, the border of the anchor nodes will be colored red instead of black.
+* `-v` Launches an interactive 3D viewer. This makes it easy to quickly visualize large graph layouts and is particularly useful for three dimensional layouts. The viewer includes its own menu of options and implements a trackball interface for translations, zooming, and scaling.
 * `-g` Expect that a layout specified in the input and start the iterative layout algorithm from the given layout.
 
 Lastly, `mars` only computes a graph layout, it does not implement a renderer. To create a visualization from a graph layout, use `neato`'s renderer by running the following command:
 
         neato -Tpng -n out.gv > out.png
 
-The `-n` option tells neato to use the given layout and the `Tpng` option specifies the output format. 
+Instructions on how to use `neato`'s renderer are included in the examples. 
 
 ## Examples
 
 The default options should work resonably well for most graph. The simplest example is 
 
-        ./mars -o finance256_layout.gv finance256.gv
+        ./mars -o finance256_layout.gv graphs/finance256.gv
         
 which would produce the following output in finance256_layout.gv
 
-        output 
+        graph G {
+            node [color=black];
+            edge [weight=1.0];
+            1        [pos="500.097581, 394.515101"];
+            0        [pos="534.359375, 311.448057"];
+            1 -- 0;
+            2        [pos="584.120741, 401.860528"];
+            2 -- 1;
+            3        [pos="632.421334, 435.689317"];
+            ...
 
 To visualize the result, we can use `neato`'s renderer to create a static image.
 
         neato -Tpng -n finance256_layout.gv > finance256.png
 
-The `-n` parameter tells `neato` that the nodes have already been positioned and have a pos attribute giving the positions. The `-T` parameter specifies the output format. The following image is the result.
+The `-n` parameter tells `neato` that the nodes have already been positioned and have a pos attribute giving the positions. The `-T` parameter specifies the output format.
 
-        ![finance](./finance256.png)
+        ![finance](images/finance256.png)
 
-The `-c`
+The `-c` parameter will set the color attribute of the anchor nodes to red, making them easier to identify.
+
+        ./mars -c -k 10 graphs/can_144.gv
 
 
+        ![can_144](images/can_144.png)
+
+Increasing the value of `-k` improves the quality of the layout.
+
+        ./mars -c -k 30 graphs/can_144.gv
+
+        ![can_144_2](images/can_144_2.png)
+
+
+The `-p` parameter specifies the exponent of the weight matrix. Different values can lead to very different layouts. `mars` implements a very accurate approximation in the case `p = 1`
+    
+        ./mars -p 1 -o nasa_layout.gv graphs/nasa1824.png
+
+        ![nasap1](images/nasap1.png)
+
+However the approximation is poorer for larger values of `p` even though in standard stress majorization `p = 2` produces the best layouts in practice.
+
+        ./mars -p 2 -o nasa_layout.gv graph/nasa1824.png
+
+        ![nasap2](images/nasap2.png)
+
+`mars` also includes an interactive viewer, specified by the `-v` parameter. This is particularly useful for visualizing three dimensional layouts.
+
+        ./mars -v -d 3 -k 1824 graphs/nasa1824.gv
+
+        ![nasa](images/nasa.png)
 
 
 ## Technical Details
