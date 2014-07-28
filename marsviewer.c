@@ -39,7 +39,23 @@ void scale_layout(int i)
     int dim = layout->c;
     int j;
 
-    for(j = 0; j < layout->r; j++) {
+    if(dim == 2) {
+        double x = layout->m[mindex(0, 0, layout)];
+        double y = layout->m[mindex(0, 1, layout)];
+        double z = 0;
+        maxp[0] = minp[0] = x;
+        maxp[1] = minp[1] = y;
+        maxp[2] = minp[2] = z;
+    } else if(dim >= 3) {
+        double x = layout->m[mindex(0, 0, layout)];
+        double y = layout->m[mindex(0, 1, layout)];
+        double z = layout->m[mindex(0, 2, layout)];
+        maxp[0] = minp[0] = x;
+        maxp[1] = minp[1] = y;
+        maxp[2] = minp[2] = z;
+    }
+
+    for(j = 1; j < layout->r; j++) {
         if(dim == 2) {
             double x = layout->m[mindex(j, 0, layout)];
             double y = layout->m[mindex(j, 1, layout)];
@@ -158,7 +174,7 @@ void display()
     Agnode_t* v;
     Agedge_t* e;
     mat layout = layouts[curr_layout];    
-    int dim = layouts[curr_layout]->c;
+    int dim = layout->c;
         
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -167,10 +183,10 @@ void display()
     glTranslatef(0, 0, -4);
     glMultMatrixf(ctx->mat);
 
-    glPointSize(10);
+    glPointSize(5);
     glBegin(GL_POINTS);
     glColor3f(1, 0, 0);
-    for(i = 0; i < layouts[curr_layout]->r; i++) {
+    for(i = 0; i < layout->r; i++) {
         if(dim == 2) {
             double x = layout->m[mindex(i, 0, layout)];
             double y = layout->m[mindex(i, 1, layout)];
@@ -355,13 +371,6 @@ void init_opengl()
 {
     glClearColor(1.0, 1.0, 1.0, 1.0);
     glShadeModel(GL_SMOOTH);
-    
-    /*glEnable(GL_LIGHTING);
-    glLightfv(GL_LIGHT0, GL_AMBIENT, ctx->ambient);
-    glLightfv(GL_LIGHT0, GL_DIFFUSE, ctx->diffuse);
-    glLightfv(GL_LIGHT0, GL_SPECULAR, ctx->specular);
-    glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
-    glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);*/
 
     glEnable(GL_DEPTH_TEST);
     glMatrixMode(GL_PROJECTION);
@@ -369,6 +378,17 @@ void init_opengl()
     gluPerspective(ctx->fovy, 1, ctx->znear, ctx->zfar);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+}
+
+void menu()
+{
+    printf("mars viewer menu\n");
+    printf("a - Animation Mode\n");
+    printf("d - Forward one frame\n");
+    printf("s - Backward one frame\n");
+    printf("f - First frame\n");
+    printf("l - Last frame\n");
+    printf("Esc - Quit\n");
 }
 
 void viewer(int argc, char* argv[])
@@ -380,6 +400,7 @@ void viewer(int argc, char* argv[])
     glutInitWindowSize(ctx->width, ctx->height);
     glutCreateWindow("mars viewer");
     init_opengl();
+    menu();
 
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
