@@ -93,7 +93,7 @@ To visualize the result, we can use `neato`'s renderer to create a static image.
 
 The `-n` parameter tells `neato` that the nodes have already been positioned and have a pos attribute giving the positions. The `-T` parameter specifies the output format.
 
-![finance](images/finance256.png)
+![finance](images/resizetest.png)
 
 The `-c` parameter will set the color attribute of the anchor nodes to red, making them easier to identify.
 
