@@ -34,7 +34,7 @@ glcontext.o: glcontext.h glcontext.c
 	$(CC) $(CFLAGS) -c glcontext.c
 
 marsviewer.o: marsviewer.h marsviewer.c
-	$(CC) $(CFLAGS) -c marsviewer.c
+	$(CC) $(CFLAGS) -Wno-deprecated-declarations -c marsviewer.c 
 
 clean:
 	rm -f $(TARGET) $(OBJECTS) *~ 
