@@ -1,3 +1,13 @@
+/**
+ *
+ * Author: Marc Khoury <khoury@eecs.berkeley.edu>
+ *
+ * Copyright (C) 2014 Marc Khoury
+ *
+ * This version is released under the Eclipse Public License
+ * with the Graphviz distribution.
+ */
+
 #ifndef GL_CONTEXT_H
 #define GL_CONTEXT_H
 

@@ -1,9 +1,15 @@
+/**
+ *
+ * Author: Marc Khoury <khoury@eecs.berkeley.edu>
+ *
+ * Copyright (C) 2014 Marc Khoury
+ *
+ * This version is released under the Eclipse Public License
+ * with the Graphviz distribution.
+ */
+
 #ifndef DIJKSTRA_H
 #define DIJKSTRA_H
-
-/*
- * Written by Marc Khoury
- */
 
 #include <stdio.h>
 #include <stdlib.h>

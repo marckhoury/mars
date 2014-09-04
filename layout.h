@@ -1,8 +1,16 @@
+/**
+ *
+ * Author: Marc Khoury <khoury@eecs.berkeley.edu>
+ *
+ * Copyright (C) 2014 Marc Khoury
+ *
+ * This version is released under the Eclipse Public License
+ * with the Graphviz distribution.
+ */
+
 #ifndef LAYOUT_H
 #define LAYOUT_H
-/*
- * Written by Marc Khoury
- */
+
 #define real double
 #define MIN(X,Y) (((X) > (Y)) ? (Y) : (X))
 #define MAX(X,Y) (((X) > (Y)) ? (X) : (Y))

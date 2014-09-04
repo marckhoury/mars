@@ -1,8 +1,16 @@
+/**
+ *
+ * Author: Marc Khoury <khoury@eecs.berkeley.edu>
+ *
+ * Copyright (C) 2014 Marc Khoury
+ *
+ * This version is released under the Eclipse Public License
+ * with the Graphviz distribution.
+ */
+
 #ifndef LINALG_H
 #define LINALG_H
-/*
- * Written by Marc Khoury
- */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>

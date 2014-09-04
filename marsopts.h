@@ -1,8 +1,16 @@
+/**
+ *
+ * Author: Marc Khoury <khoury@eecs.berkeley.edu>
+ *
+ * Copyright (C) 2014 Marc Khoury
+ *
+ * This version is released under the Eclipse Public License
+ * with the Graphviz distribution.
+ */
+
 #ifndef CMDLINE_H
 #define CMDLINE_H
-/*
- * Written by Marc Khoury
- */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
@@ -21,7 +29,7 @@ struct marsopts {
     int given;
 };
 
-static char* use_string = "Usage: mars [-k k] [-p power] [-d dim] [-s scale] [-i iter] [-o outfile] [-cg?]\n\
+static char* use_string = "Usage: mars [-k k] [-p power] [-d dim] [-s scale] [-i iter] [-o outfile] [-cvg?]\n\
   -k k       - sample k columns from the full laplacian matrix\n\
   -p power   - exponent of the weight matrix\n\
   -d dim     - dimension of the layout\n\
