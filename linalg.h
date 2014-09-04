@@ -6,6 +6,11 @@
  *
  * This version is released under the Eclipse Public License
  * with the Graphviz distribution.
+ *
+ * A version is also available on GitHub: https://github.com/marckhoury/mars
+ * If you make improvements or bug fixes to this code it would be much
+ * appreciated if you could also contribute those changes back to the
+ * GitHub repository.
  */
 
 #ifndef LINALG_H
