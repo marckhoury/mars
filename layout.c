@@ -523,6 +523,9 @@ static void update_anchors(mat z, mat dij, int* anchors, int power)
                 }
             }
         }
+        if(wgt_sum < EPSILON) {
+            wgt_sum = 1;
+        }
         for(j = 0; j < z->c; j++) {
             z->m[mindex(n,j,z)] = xi_next[j]/wgt_sum;       
         }
