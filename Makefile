@@ -5,7 +5,7 @@ ifeq ($(OS),Darwin)
     LIBS = -lcgraph -llapack -lcdt libsfdp.a -framework GLUT -framework OpenGL -framework Cocoa
 else
     CC = gcc
-    LIBS = -lcgraph -llapack -lcdt libsfdp.a -lGL -lglut -lGLU
+    LIBS = -lcgraph -llapack -lcdt libsfdp.a -lGL -lglut -lGLU -lm -lblas
 endif
 
 CFLAGS = -O2
