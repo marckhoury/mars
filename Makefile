@@ -2,10 +2,10 @@ OS = $(shell uname -s)
 
 ifeq ($(OS),Darwin)
     CC = clang
-    LIBS = -lcgraph -llapack -lcdt libsfdp.a -framework GLUT -framework OpenGL -framework Cocoa
+    LIBS = -lcgraph -llapack -lcdt libsfdp.a -framework GLUT -framework OpenGL -framework Cocoa -lm
 else
     CC = gcc
-    LIBS = -lcgraph -llapack -lcdt libsfdp.a -lGL -lglut -lGLU
+    LIBS = -lcgraph -llapack -lcdt libsfdp.a -lGL -lglut -lGLU -lm
 endif
 
 CFLAGS = -O2
