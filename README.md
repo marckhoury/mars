@@ -111,13 +111,13 @@ Increasing the value of `-k` improves the quality of the layout.
 
 The `-p` parameter specifies the exponent of the weight matrix. Different values can lead to very different layouts. `mars` implements a very accurate approximation in the case `p = 1`
     
-        ./mars -p 1 -o nasa_layout.gv graphs/nasa1824.png
+        ./mars -p 1 -o nasa_layout.gv graphs/nasa1824.gv
 
 ![nasap1](images/nasap1.png)
 
 However the approximation is poorer for larger values of `p` even though in standard stress majorization `p = 2` produces the best layouts in practice.
 
-        ./mars -p 2 -o nasa_layout.gv graphs/nasa1824.png
+        ./mars -p 2 -o nasa_layout.gv graphs/nasa1824.gv
 
 ![nasap2](images/nasap2.png)
 
