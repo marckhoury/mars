@@ -17,7 +17,7 @@
 * On Linux these packages can be installed using apt-get:
 
         sudo apt-get install liblapack-dev
-        sudo apt-get install graphviz graphviz-dev libcgraph5
+        sudo apt-get install graphviz graphviz-dev libcgraph6 libgraphviz-dev
         sudo apt-get install libgl1-mesa-dev libglu1-mesa libglu1-mesa-dev freeglut3 freeglut3-dev
 
 ### Mac OSX and *nix
